@@ -28,6 +28,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return id + "." + "[" +(isCompleted ? "x" : "-")+ "] " + description;
+        return id + ". " + "[" +(isCompleted ? "X" : " ")+ "] " + description;
     }
 }

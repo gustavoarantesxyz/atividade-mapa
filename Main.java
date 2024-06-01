@@ -56,7 +56,6 @@ public class Main {
         System.out.println("| 4. Marcar tarefa como concluída |");
         System.out.println("| 5. Sair                         |");
         System.out.println("+---------------------------------+");
-        System.out.println("");
         System.out.print("Escolha uma opção: ");
     }
 
