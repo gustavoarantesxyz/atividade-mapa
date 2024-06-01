@@ -11,16 +11,28 @@ public class ToDoList {
     public void addTask(String description) {
         Task task = new Task(description);
         tasks.add(task);
-        System.out.println("Tarefa adicionada: " + task);
+        System.out.println("");
+        System.out.println("+---------------------------------+");
+        System.out.println("|           Adicionada!           |");
+        System.out.println("+---------------------------------+");
+        System.out.println(task);
+        System.out.println("");
+        System.out.println("+---------------------------------+");
     }
 
     public void listTasks() {
         if (tasks.isEmpty()) {
             System.out.println("Nenhuma tarefa na lista.");
         } else {
+            System.out.println("");
+            System.out.println("+---------------------------------+");
+            System.out.println("|             Tarefas             |");
+            System.out.println("+---------------------------------+");
             for (Task task : tasks) {
                 System.out.println(task);
             }
+            System.out.println("");
+            System.out.println("+---------------------------------+");
         }
     }
 
@@ -31,7 +43,13 @@ public class ToDoList {
             Task task = iterator.next();
             if (task.getId() == id) {
                 iterator.remove();
-                System.out.println("Tarefa removida: " + task);
+                System.out.println("");
+                System.out.println("+---------------------------------+");
+                System.out.println("|            Removida!            |");
+                System.out.println("+---------------------------------+");
+                System.out.println(task);
+                System.out.println("");
+                System.out.println("+---------------------------------+");
                 found = true;
                 break;
             }
@@ -45,7 +63,13 @@ public class ToDoList {
         for (Task task : tasks) {
             if (task.getId() == id) {
                 task.setCompleted(true);
-                System.out.println("Tarefa marcada como concluída: " + task);
+                System.out.println("");
+                System.out.println("+---------------------------------+");
+                System.out.println("|           [X] Marcada!          |");
+                System.out.println("+---------------------------------+");
+                System.out.println("Tarefa concluída: " + task);
+                System.out.println("");
+                System.out.println("+---------------------------------+");
                 return;
             }
         }
