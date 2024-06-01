@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,11 +7,13 @@ public class Main {
         ToDoList toDoList = new ToDoList();
 
         while (true) {
+            clearScreen();
             printMenu();
             int choice = getUserChoice(scanner);
 
             switch (choice) {
                 case 1:
+                    clearScreen();
                     System.out.println("");
                     System.out.print("Digite a descrição da tarefa: ");
                     String description = scanner.nextLine();
@@ -18,10 +21,12 @@ public class Main {
                     pauseForEnter(scanner);
                     break;
                 case 2:
+                    clearScreen();
                     toDoList.listTasks();
                     pauseForEnter(scanner);
                     break;
                 case 3:
+                    clearScreen();
                     System.out.println("");
                     System.out.print("Digite o ID da tarefa a ser removida: ");
                     int removeId = scanner.nextInt();
@@ -30,13 +35,16 @@ public class Main {
                     pauseForEnter(scanner);
                     break;
                 case 4:
+                    clearScreen();
                     System.out.println("");
                     System.out.print("Digite o ID da tarefa a ser marcada como concluída: ");
                     int completeId = scanner.nextInt();
                     scanner.nextLine();  // Consumir a nova linha
                     toDoList.markTaskAsCompleted(completeId);
+                    pauseForEnter(scanner);
                     break;
                 case 5:
+                    clearScreen();
                     System.out.println("");
                     System.out.println("Saindo...");
                     scanner.close();
@@ -78,5 +86,18 @@ public class Main {
     private static void pauseForEnter(Scanner scanner) {
         System.out.println("Pressione Enter para continuar...");
         scanner.nextLine();
+    }
+
+    private static void clearScreen() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (IOException | InterruptedException ex) {
+            System.out.println("Erro ao limpar a tela: " + ex.getMessage());
+        }
     }
 }
