@@ -15,9 +15,11 @@ public class Main {
                     System.out.print("Digite a descrição da tarefa: ");
                     String description = scanner.nextLine();
                     toDoList.addTask(description);
+                    pauseForEnter(scanner);
                     break;
                 case 2:
                     toDoList.listTasks();
+                    pauseForEnter(scanner);
                     break;
                 case 3:
                     System.out.println("");
@@ -25,6 +27,7 @@ public class Main {
                     int removeId = scanner.nextInt();
                     scanner.nextLine();  // Consumir a nova linha
                     toDoList.removeTask(removeId);
+                    pauseForEnter(scanner);
                     break;
                 case 4:
                     System.out.println("");
@@ -70,5 +73,10 @@ public class Main {
             }
         }
         return choice;
+    }
+
+    private static void pauseForEnter(Scanner scanner) {
+        System.out.println("Pressione Enter para continuar...");
+        scanner.nextLine();
     }
 }
